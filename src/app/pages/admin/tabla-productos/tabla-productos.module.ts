@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TablaProductosPageRoutingModule } from './tabla-productos-routing.module';
 
 import { TablaProductosPage } from './tabla-productos.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TablaProductosPageRoutingModule
+    TablaProductosPageRoutingModule,
+    SharedModule
   ],
   declarations: [TablaProductosPage]
 })
