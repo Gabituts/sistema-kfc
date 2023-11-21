@@ -1,13 +1,26 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>tabla-productos</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">tabla-productos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<app-navbar></app-navbar>
+  <div class="container-flex text-center">
+    <h1 class="mt-3">Todos los productos</h1>
+    <table class="table table-hover">
+      <thead>
+        <tr class="table-dark">
+          <th scope="col">#</th>
+          <th scope="col">Producto</th>
+          <th scope="col">Imagen</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="fila">
+          <th>esigife</th>
+          <th>cubeta de pollo</th>
+          <th><img class="imagen-ej" src="../../../../assets/cubetapolloej.jpg"></th>
+          <th>$3000</th>
+          <th><ion-icon name="create-outline" size="large"></ion-icon> <ion-icon name="trash-outline" size="large"></ion-icon></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </ion-content>

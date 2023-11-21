@@ -1,13 +1,41 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>admin</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">admin</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <app-navbar></app-navbar>
+  <div class="container-flex">
+    <div class="card m-3">
+      <div class="card-body row">
+        <div class="col d-flex align-items-center">
+          <img src="../../../assets/persona.png">
+        </div>
+        <div class="col">
+          <h4 class="card-title texto">Ver usuarios</h4>
+          <p class="card-text">Ingrese aqui para ver todos los usuarios del sitio web registrados</p>
+          <button type="button" class="btn btn-success me-2">Ingresar</button>
+        </div>
+      </div>
+    </div>
+    <div class="card m-3">
+      <div class="card-body row">
+        <div class="col d-flex align-items-center">
+          <img src="../../../assets/productos.png">
+        </div>
+        <div class="col">
+          <h4 class="card-title texto">Ver productos</h4>
+          <p class="card-text">Ingrese aqui para ver todos los productos del sitio web</p>
+          <button type="button" class="btn btn-success me-2" routerLink="/admin/tabla-productos">Ingresar</button>
+        </div>
+      </div>
+    </div>
+    <div class="card m-3">
+      <div class="card-body row">
+        <div class="col d-flex align-items-center">
+          <img src="../../../assets/productos.png">
+        </div>
+        <div class="col">
+          <h4 class="card-title texto">Agregar productos</h4>
+          <p class="card-text">Ingrese aqui para agregar un producto al sitio web</p>
+          <button type="button" class="btn btn-success me-2" routerLink="/admin/nuevo-producto">Ingresar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
