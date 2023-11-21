@@ -1,0 +1,18 @@
+.linea{
+    display: flex;
+    flex-direction: row;
+}
+
+ul{
+    flex-direction: row;
+}
+
+li{
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+}
+
+ion-icon{
+    color: white;
+    margin-right: 0.8rem;
+}
