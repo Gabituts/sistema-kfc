@@ -10,7 +10,23 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'auth',
+    loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule)
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule)
+  },
+  {
+    path: 'verproductos',
+    loadChildren: () => import('./pages/verproductos/verproductos.module').then( m => m.VerproductosPageModule)
+  },
+  {
+    path: 'compra',
+    loadChildren: () => import('./pages/compra/compra.module').then( m => m.CompraPageModule)
+  },
+
 ];
 
 @NgModule({
