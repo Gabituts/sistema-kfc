@@ -33,9 +33,41 @@ export class LoginPage {
     this.firebaseService.IniciarSesion(this.form.value as User).then(res =>{
       console.log(res)
       console.log('logueo exitoso')
+      this.getInfoUser(res.user.uid)
       // this.router.navigate(['/verproductos'])
       this.utilsService.routerLink('/verproductos')
-      this.form.reset();
+
+    }).catch(error =>{
+      console.log(error);
+      this.utilsService.presentToast({
+        message: error.message,
+        duration: 2500,
+        color: 'primary',
+        position: 'middle'
+      })
+    }).finally(() => {
+      loading.dismiss();
+    })
+  }
+
+  async getInfoUser(uid:string){
+    console.log(this.form.value)
+    
+    //cargando
+    const loading = await this.utilsService.loading();
+    await loading.present();
+
+    let path = `users/${uid}`
+
+    this.firebaseService.getDocument(path).then( user =>{
+      this.utilsService.guardarLocal('user', user)
+      //this.router.navigate(['/verproductos'])
+      this.utilsService.presentToast({
+        message: `Bienvenido`,
+        duration: 1500,
+        color: 'primary',
+        position: 'middle'
+      })
     }).catch(error =>{
       console.log(error);
       this.utilsService.presentToast({
