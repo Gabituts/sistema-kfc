@@ -3,11 +3,14 @@
   <app-navbar></app-navbar>
     <div class="container-flex mx-4 logincont">
       <div class="text-center aling-items-center">
-        <h1 class="">Iniciar Sesión</h1>
+        <h1 class="">Registrarse</h1>
       </div>
       <!-- FORM -->
       <form [formGroup]="form">
         <div class="form-group">
+          <!-- ingrese su nombre -->
+          <label class="col-form-label mt-3 texto" for="inputDefault">Nombre:</label>
+          <input formControlName="name" type="text" class="form-control texto" placeholder="Ingrese su nombre completo">
           <!-- usuario -->
           <label class="col-form-label mt-3 texto" for="inputDefault">Usuario:</label>
           <input formControlName="email" type="email" class="form-control texto" placeholder="Ingrese su usuario">
@@ -16,10 +19,10 @@
           <input formControlName="password" type="password" class="form-control texto" placeholder="Ingrese su contraseña">
         </div>
         <div class="text-end mt-2">
-          <a href="/auth/registrarse">No tienes una cuenta?</a>
+          <a href="/auth/login">Ya tienes una cuenta?</a>
         </div>
         <div class="contboton aling-items-center text-center mt-3">
-          <button type="button" class="btn btn-primary" (click)="ingresar()">Iniciar sesión</button>
+          <button type="button" class="btn btn-primary" (click)="registrarse()">Registrarse</button>
         </div>
       </form>
     </div>
