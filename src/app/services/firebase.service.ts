@@ -2,6 +2,8 @@ import { Injectable, inject } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { User } from '../models/users.model';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { getFirestore, setDoc, doc, getDoc } from '@angular/fire/firestore'
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +11,14 @@ import { User } from '../models/users.model';
 export class FirebaseService {
 
   auth = inject(AngularFireAuth);
+  firestore = inject(AngularFirestore)
 
-  // AUTENTIFICACION
+  // ---------------AUTENTIFICACION---------------
+
+  //Obtener auntentificacion
+  getAuth(){
+    return getAuth();
+  }
 
   //Iniciar sesion
   IniciarSesion(user: User){
@@ -33,4 +41,18 @@ export class FirebaseService {
       return Promise.reject('Usuario no encontrado');
     }
   }
+
+  // ---------------BASE DE DATOS---------------
+
+  //Setear documento (devuelve con setdoc un doc con el path y la data)
+  setDocument(path:string, data:any){
+    return setDoc(doc(getFirestore(), path), data);
+  }
+
+  //Obtener documento
+  async getDocument(path:string){
+    return (await getDoc(doc(getFirestore(),path))).data()
+
+  }
+
 }
