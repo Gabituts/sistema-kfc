@@ -33,7 +33,9 @@ export class LoginPage {
     this.firebaseService.IniciarSesion(this.form.value as User).then(res =>{
       console.log(res)
       console.log('logueo exitoso')
-      this.router.navigate(['/verproductos'])
+      // this.router.navigate(['/verproductos'])
+      this.utilsService.routerLink('/verproductos')
+      this.form.reset();
     }).catch(error =>{
       console.log(error);
       this.utilsService.presentToast({
