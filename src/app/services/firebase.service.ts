@@ -23,7 +23,14 @@ export class FirebaseService {
   }
 
   //Actualizar Usuario
-  actualizarUsuario(displayName: string ){
-    // return updateProfile(getAuth().currentUser, {displayName})
+  actualizarUsuario(displayName: string) {
+    const user = getAuth().currentUser;
+    if (user) {
+      return updateProfile(user, { displayName });
+    } else {
+      // Manejar el caso en el que el usuario es null, posiblemente lanzando un error o manejándolo de otra manera.
+      console.error('Usuario no encontrado');
+      return Promise.reject('Usuario no encontrado');
+    }
   }
 }

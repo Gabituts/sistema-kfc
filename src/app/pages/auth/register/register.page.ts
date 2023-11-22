@@ -7,33 +7,35 @@ import { UtilsService } from 'src/app/services/utils.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
 })
-export class LoginPage {
-
+export class RegisterPage {
   firebaseService = inject(FirebaseService)
   utilsService = inject(UtilsService)
   router = inject(Router)
 
-
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required]),
+
   })
 
-  async ingresar(){
+  async registrarse(){
     console.log(this.form.value)
     
     //cargando
     const loading = await this.utilsService.loading();
     await loading.present();
 
-    this.firebaseService.IniciarSesion(this.form.value as User).then(res =>{
+    this.firebaseService.registrarse(this.form.value as User).then( async res =>{
+      await this.firebaseService.actualizarUsuario(this.form.value.name as string)
       console.log(res)
-      console.log('logueo exitoso')
+      console.log('registro exitoso')
       this.router.navigate(['/verproductos'])
+
     }).catch(error =>{
       console.log(error);
       this.utilsService.presentToast({
@@ -46,4 +48,7 @@ export class LoginPage {
       loading.dismiss();
     })
   }
+
+
+
 }
