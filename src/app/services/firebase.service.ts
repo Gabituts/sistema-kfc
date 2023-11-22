@@ -3,7 +3,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { User } from '../models/users.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { getFirestore, setDoc, doc, getDoc } from '@angular/fire/firestore'
+import { getFirestore, setDoc, doc, getDoc, addDoc, collection, collectionData, query, updateDoc, deleteDoc } from '@angular/fire/firestore'
+import { Producto } from '../models/producto.models';
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +53,26 @@ export class FirebaseService {
   //Obtener documento
   async getDocument(path:string){
     return (await getDoc(doc(getFirestore(),path))).data()
+  }
 
+  //Obtener coleccion
+  getColeccionData(path:string, collectionQuery?: any){
+    const ref = collection(getFirestore(), path)
+    return collectionData(query(ref, collectionQuery), {idField:'id'})
+  }
+
+  //Agregar documento - producto
+  postDocument(path:string, data:any){
+    return addDoc(collection(getFirestore(), path), data);
+  }
+
+  //Actualizar producto
+  updateDocument(path:string, data:any){
+    return updateDoc(doc(getFirestore(), path), data);
+  }
+  //Eliminar producto
+  deleteDocument(path:string){
+    return deleteDoc(doc(getFirestore(), path));
   }
 
 }
