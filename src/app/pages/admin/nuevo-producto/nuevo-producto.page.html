@@ -5,7 +5,7 @@
       <div class="inputs m-3">
         <!-- FORMULARIO -->
         <div [formGroup]="form" class="form-group">
-          <input formControlName="producto" type="text" class="form-control mt-3" placeholder="Producto" id="inputDefault">
+          <input formControlName="nombre" type="text" class="form-control mt-3" placeholder="Producto" id="inputDefault">
           <input formControlName="precio" type="text" class="form-control mt-3" placeholder="Precio" id="inputDefault">
           <input formControlName="img" type="text" class="form-control mt-3" placeholder="URL imagen" id="inputDefault">
           <input formControlName="descripcion" type="text" class="form-control mt-3" placeholder="Descripción" id="inputDefault">
@@ -27,11 +27,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="fila">
-            <th>esigife</th>
-            <th>cubeta de pollo</th>
-            <th><img class="imagen-ej" src="../../../../assets/cubetapolloej.jpg"></th>
-            <th>$3000</th>
+          <tr class="fila" *ngFor="let producto of productos">
+            <th>{{ producto.id }}</th>
+            <th>{{ producto.nombre }}</th>
+            <th><img class="imagen-ej" src="{{ producto.img }}"></th>
+            <th>{{ producto.precio }}</th>
           </tr>
         </tbody>
       </table>

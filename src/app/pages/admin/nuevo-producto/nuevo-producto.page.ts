@@ -26,8 +26,11 @@ export class NuevoProductoPage{
     precio: new FormControl(0, [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]),
   })
 
+  ionViewWillEnter(){
+    this.getProducts()
+  }
 
-
+// FUNCION PARA CARGAR PRODUCTOS
   async cargarProducto(){
     console.log(this.form.value)
     
@@ -57,6 +60,20 @@ export class NuevoProductoPage{
       })
     }).finally(() => {
       loading.dismiss();
+    })
+  }
+
+//FUNCION PARA OBTENER PRODUCTOS
+productos: Producto[] = [];
+
+  getProducts(){
+    let path = `productos`
+    let sub = this.firebaseService.getColeccionData(path).subscribe({
+      next: (res:any) =>{
+        console.log(res)
+        this.productos = res
+        sub.unsubscribe()
+      }
     })
   }
 
