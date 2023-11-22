@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NoAuthGuard } from './guards/no-auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -9,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule)
+    loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule), canActivate:[AuthGuard]
   },
   {
     path: 'admin',
@@ -17,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'verproductos',
-    loadChildren: () => import('./pages/verproductos/verproductos.module').then( m => m.VerproductosPageModule)
+    loadChildren: () => import('./pages/verproductos/verproductos.module').then( m => m.VerproductosPageModule), canActivate:[NoAuthGuard]
   },
   {
     path: 'compra',

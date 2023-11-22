@@ -15,6 +15,11 @@ export class FirebaseService {
 
   // ---------------AUTENTIFICACION---------------
 
+  //Obtener auntentificacion
+  getAuth(){
+    return getAuth();
+  }
+
   //Iniciar sesion
   IniciarSesion(user: User){
     return signInWithEmailAndPassword(getAuth(), user.email, user.password)
