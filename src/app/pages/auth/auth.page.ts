@@ -5,11 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './auth.page.html',
   styleUrls: ['./auth.page.scss'],
 })
-export class AuthPage implements OnInit {
+export class AuthPage{
 
   constructor() { }
 
-  ngOnInit() {
-  }
+
 
 }

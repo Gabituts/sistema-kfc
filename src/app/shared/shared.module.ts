@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { IonicModule } from '@ionic/angular';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { IonicModule } from '@ionic/angular';
     IonicModule
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
